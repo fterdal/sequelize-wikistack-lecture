@@ -6,9 +6,10 @@ const Person = db.define('people', {
   name: Sequelize.STRING,
   imgUrl: {
     type: Sequelize.STRING,
+    defaultValue: 'https://placeimg.com/200/200/nature',
+    vallowNull: false,
     validate: {
       isUrl: true,
-      defaultValue: 'https://placeimg.com/200/200/nature',
     }
   }
 });

@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 const db = require('./db-sol').db;
 const Pet = require('./db-sol').Pet;
@@ -7,6 +8,7 @@ const Person = require('./db-sol').Person;
 const app = express();
 
 app.use(morgan('dev'));
+app.use(bodyParser.json());
 
 const homePage = `
   <!DOCTYPE html>
@@ -39,11 +41,12 @@ app.get('/pets', (req, res, next) => {
   .catch(next)
 })
 
-app.post('/pets', (req, res, next) => {
-  Person.create(req.body)
+app.post('/people', (req, res, next) => {
+  const { name, imgUrl } = req.body;
+  Person.create({ name, imgUrl })
   .then(newPerson => {
     console.log(newPerson);
-    res.redirect('/pets');
+    res.redirect('/people');
   })
 })
 
