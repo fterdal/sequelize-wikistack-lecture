@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 
+const db = require('./db');
 const app = express();
 
 app.use(morgan('dev'));
@@ -21,11 +22,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/people', (req, res) => {
-  res.send('All people -- Coming Soon');
+  res.send('People -- Coming Soon');
 })
 
 app.get('/pets', (req, res) => {
-  res.send('All pets -- Coming Soon');
+  res.send('Pets -- Coming Soon');
 })
 
 const PORT = 3000;
