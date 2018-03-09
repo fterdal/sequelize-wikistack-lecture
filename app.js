@@ -12,8 +12,8 @@ const homePage = `
   <html>
     <body>
       <h1>Home Page</h1>
-      <h2><a href="/people">People</a>
-      <h2><a href="/pets">Pets</a>
+      <h2><a href="/people">People</a></h2>
+      <h2><a href="/pets">Pets</a></h2>
     </body>
   </html>
 `;
@@ -30,9 +30,6 @@ app.get('/pets', (req, res) => {
   res.send('Pets -- Coming Soon');
 })
 
-db.sync({ force: true })
-  .then(() => {
-    const PORT = 3000;
-    app.listen(PORT, () => console.log(`server awaiting requests on ${PORT}`));
-})
+const PORT = 3000;
+app.listen(PORT, () => console.log(`server awaiting requests on ${PORT}`));
 
