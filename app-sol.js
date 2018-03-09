@@ -40,8 +40,9 @@ app.get('/pets', (req, res, next) => {
 })
 
 app.post('/pets', (req, res, next) => {
-  People.create(req.body)
+  Person.create(req.body)
   .then(newPerson => {
+    console.log(newPerson);
     res.redirect('/pets');
   })
 })
